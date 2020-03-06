@@ -23,7 +23,7 @@ namespace InvoiceRegister
             try
             {
                 var user = _accountManager.Login(username, password);
-                Form1.IsLoggedIn = true;
+                Home.IsLoggedIn = true;
                 MessageBox.Show("You successfully logged in");
             }
             catch(UsernameInvalidException e)
@@ -44,7 +44,6 @@ namespace InvoiceRegister
         {
             Uzytkownik user = new Uzytkownik
             {
-                Id = 2,
                 Login = username,
                 Hasło = password
             };
@@ -61,6 +60,25 @@ namespace InvoiceRegister
             {
                 MessageBox.Show("Try again with different credentials");
             }
+        }
+
+        public Uzytkownik GetLoggedUser()
+        {
+            Uzytkownik user = new Uzytkownik();
+            try
+            {
+                user = _accountManager.GetLoggedUser();
+                return user;
+            }
+            catch(UserNotFoundException e)
+            {
+                MessageBox.Show("No logged user found");
+            }
+            catch
+            {
+                MessageBox.Show("Try again with different credentials");
+            }
+            return user;
         }
 
     }

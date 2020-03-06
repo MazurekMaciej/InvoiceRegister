@@ -23,7 +23,7 @@ namespace InvoiceRegister
                 DependencyResolver.Container = _container;
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(DependencyResolver.Container.Resolve<Form1>());
+                Application.Run(DependencyResolver.Container.Resolve<Home>());
             }
         }
     }

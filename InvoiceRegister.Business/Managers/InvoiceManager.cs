@@ -20,18 +20,16 @@ namespace InvoiceRegister.Business.Managers
         public List<Faktura> ListInvoices(Uzytkownik user)
         {
             List<Faktura> listInvoices = new List<Faktura>();
-            //DatabaseContext dbContext = new DatabaseContext();
             using (DatabaseContext dbContext = new DatabaseContext())
             {
-                var loggedUser = _accountManager.GetLoggedUser();
-                int id = loggedUser.Id;
-                listInvoices = dbContext.Faktury.Where(inv => inv.Id == id).ToList();
+               // var loggedUser = _accountManager.GetLoggedUser();
+              //  int id = loggedUser.Id;
+                listInvoices = dbContext.Faktury.Where(inv => inv.Id == user.Id).ToList();
                 return listInvoices;
             }
         }
         public void CreateInvoice(Faktura invoice)
         {
-            // DatabaseContext dbContext = new DatabaseContext();
             using (DatabaseContext dbContext = new DatabaseContext())
             {
                 try
