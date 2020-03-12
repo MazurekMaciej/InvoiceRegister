@@ -29,12 +29,12 @@ namespace InvoiceRegister.Business.Managers
                 }
                 else
                 {
-                    throw new PasswordInvalidException("Invalid password");
+                    throw new PasswordInvalidException("Nieprawidłowe hasło");
                 }
             }
             else
             {
-                throw new UsernameInvalidException("User cannot be found");
+                throw new UsernameInvalidException("Nie znaleziono uzytkownika");
             }
         }
 
@@ -42,7 +42,7 @@ namespace InvoiceRegister.Business.Managers
         {
             if (!IsLoggedIn())
             {
-                throw new UserNotFoundException("User is not logged in");
+                throw new UserNotFoundException("Uzytkownik nie jest zalogowany");
             }
 
         }
@@ -52,7 +52,7 @@ namespace InvoiceRegister.Business.Managers
             DatabaseContext dbContext = new DatabaseContext();
             if (user.Login == "" || user.Hasło == "")
             {
-                throw new RegistrationException("Registration error. Username/passoword not provided");
+                throw new RegistrationException("Login/hasło nie wprowadzone");
             }
             else
             {
@@ -63,7 +63,7 @@ namespace InvoiceRegister.Business.Managers
                 }
                 catch (Exception)
                 {
-                    throw new RegistrationException("Registration failed. User already exists");
+                    throw new RegistrationException("Ten uzytkownik juz istnieje");
                 }
             }
         }
@@ -78,7 +78,7 @@ namespace InvoiceRegister.Business.Managers
             }
             catch
             {
-                throw new UserNotFoundException("No logged user found");
+                throw new UserNotFoundException("Nie znaleziono zalogowanego uzytkownika");
             }
         }
 

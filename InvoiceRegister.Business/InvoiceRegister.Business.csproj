@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="Managers\AccountManager.cs" />
     <Compile Include="Managers\ClientManager.cs" />
-    <Compile Include="Managers\InvoiceItemManager.cs" />
     <Compile Include="Managers\InvoiceManager.cs" />
     <Compile Include="Managers\SellerManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

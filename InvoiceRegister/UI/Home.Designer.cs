@@ -38,10 +38,8 @@
             this.exit = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.loginPanel1 = new InvoiceRegister.LoginPanel();
             this.registerPanel1 = new InvoiceRegister.RegisterPanel();
-            this.listInvoicesPanel1 = new InvoiceRegister.ListInvoicesPanel();
-            this.testListButton = new System.Windows.Forms.Label();
+            this.loginPanel1 = new InvoiceRegister.LoginPanel();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.header.SuspendLayout();
@@ -50,7 +48,6 @@
             // sidepanel
             // 
             this.sidepanel.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.sidepanel.Controls.Add(this.testListButton);
             this.sidepanel.Controls.Add(this.zarejestrujButton);
             this.sidepanel.Controls.Add(this.zalogujButton);
             this.sidepanel.Controls.Add(this.panel1);
@@ -167,15 +164,6 @@
             this.bunifuDragControl1.TargetControl = this.header;
             this.bunifuDragControl1.Vertical = true;
             // 
-            // loginPanel1
-            // 
-            this.loginPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loginPanel1.Location = new System.Drawing.Point(200, 75);
-            this.loginPanel1.Name = "loginPanel1";
-            this.loginPanel1.Size = new System.Drawing.Size(825, 512);
-            this.loginPanel1.TabIndex = 2;
-            this.loginPanel1.Visible = false;
-            // 
             // registerPanel1
             // 
             this.registerPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -185,27 +173,14 @@
             this.registerPanel1.TabIndex = 3;
             this.registerPanel1.Visible = false;
             // 
-            // listInvoicesPanel1
+            // loginPanel1
             // 
-            this.listInvoicesPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listInvoicesPanel1.Location = new System.Drawing.Point(200, 75);
-            this.listInvoicesPanel1.Name = "listInvoicesPanel1";
-            this.listInvoicesPanel1.Size = new System.Drawing.Size(825, 512);
-            this.listInvoicesPanel1.TabIndex = 4;
-            this.listInvoicesPanel1.Visible = false;
-            // 
-            // testListButton
-            // 
-            this.testListButton.AutoSize = true;
-            this.testListButton.BackColor = System.Drawing.Color.Transparent;
-            this.testListButton.Font = new System.Drawing.Font("Century Schoolbook", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.testListButton.ForeColor = System.Drawing.Color.White;
-            this.testListButton.Location = new System.Drawing.Point(57, 281);
-            this.testListButton.Name = "testListButton";
-            this.testListButton.Size = new System.Drawing.Size(51, 25);
-            this.testListButton.TabIndex = 5;
-            this.testListButton.Text = "Test";
-            this.testListButton.Click += new System.EventHandler(this.testListButton_Click);
+            this.loginPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loginPanel1.Location = new System.Drawing.Point(200, 75);
+            this.loginPanel1.Name = "loginPanel1";
+            this.loginPanel1.Size = new System.Drawing.Size(825, 512);
+            this.loginPanel1.TabIndex = 2;
+            this.loginPanel1.Visible = false;
             // 
             // Home
             // 
@@ -213,7 +188,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1025, 587);
-            this.Controls.Add(this.listInvoicesPanel1);
             this.Controls.Add(this.registerPanel1);
             this.Controls.Add(this.loginPanel1);
             this.Controls.Add(this.header);
@@ -243,8 +217,6 @@
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private RegisterPanel registerPanel1;
         private LoginPanel loginPanel1;
-        private ListInvoicesPanel listInvoicesPanel1;
-        private System.Windows.Forms.Label testListButton;
     }
 }
 

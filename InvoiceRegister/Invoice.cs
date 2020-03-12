@@ -24,7 +24,7 @@ namespace InvoiceRegister
             Account account = DependencyResolver.Container.Resolve<Account>();
             try
             {
-                Uzytkownik user2 = new Uzytkownik { Id = 2 };
+                var user2 = account.GetLoggedUser();
                 invoicesList = _invoiceManager.ListInvoices(user2);
             }
             catch(Exception e)
@@ -36,7 +36,42 @@ namespace InvoiceRegister
 
         public void CreateInvoice(Faktura invoice)
         {
-
+            try
+            {
+                _invoiceManager.CreateInvoice(invoice);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            
         }
+
+        public void UpdateInvoice(Faktura invoice)
+        {
+            try
+            {
+                _invoiceManager.UpdateInvoice(invoice);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        public Faktura GetInvoice(int id)
+        {
+            try
+            {
+                Faktura invoice = _invoiceManager.GetInvoice(id);
+                return invoice;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                throw;
+            }
+        }
+
     }
 }

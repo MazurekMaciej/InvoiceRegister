@@ -12,22 +12,27 @@ namespace InvoiceRegister.Business.Managers
 {
     public class ClientManager : IClientManager
     {
-       // private IAccountManager _accountManager;
-        public ClientManager(/*IAccountManager accountManager*/)
+        private IAccountManager _accountManager;
+        public ClientManager(IAccountManager accountManager)
         {
-           // _accountManager = accountManager ?? throw new ArgumentNullException(nameof(accountManager));
+            _accountManager = accountManager ?? throw new ArgumentNullException(nameof(accountManager));
         }
         public void CreateClient(Klient client)
         {
+            Klient client2 = new Klient();
+            client2 = client;
+            var user = _accountManager.GetLoggedUser();
             DatabaseContext dbContext = new DatabaseContext();
             try
             {
-                dbContext.Klienci.Add(client);
+                var user2 = dbContext.Uzytkownicy.Where(u => u.Id == user.Id).FirstOrDefault();
+                client2.Uzytkownik = user2;
+                dbContext.Klienci.Add(client2);
                 dbContext.SaveChanges();
             }
             catch (ClientException)
             {
-                throw new ClientException("Client cannot be created");
+                throw new ClientException("Nie udalo sie stworzyc klienta");
             }
         }
 
@@ -41,7 +46,7 @@ namespace InvoiceRegister.Business.Managers
             }
             catch (ClientException)
             {
-                throw new ClientException("Client not found");
+                throw new ClientException("Klient nie znaleziony");
             }
         }
     }

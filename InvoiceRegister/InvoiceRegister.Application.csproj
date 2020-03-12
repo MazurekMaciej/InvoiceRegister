@@ -144,41 +144,88 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="DependencyResolver.cs" />
-    <Compile Include="Home.cs">
+    <Compile Include="Seller.cs" />
+    <Compile Include="UI\AddInvoicePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\AddInvoicePanel.Designer.cs">
+      <DependentUpon>AddInvoicePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AddInvoicePanel2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\AddInvoicePanel2.Designer.cs">
+      <DependentUpon>AddInvoicePanel2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AddInvoicePanel3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\AddInvoicePanel3.Designer.cs">
+      <DependentUpon>AddInvoicePanel3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EditInvoicePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\EditInvoicePanel.Designer.cs">
+      <DependentUpon>EditInvoicePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Home.Designer.cs">
+    <Compile Include="UI\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
     <Compile Include="Invoice.cs" />
-    <Compile Include="ListInvoicesPanel.cs">
+    <Compile Include="UI\InvoicesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\InvoicesForm.Designer.cs">
+      <DependentUpon>InvoicesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ListInvoicesPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ListInvoicesPanel.Designer.cs">
+    <Compile Include="UI\ListInvoicesPanel.Designer.cs">
       <DependentUpon>ListInvoicesPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginPanel.cs">
+    <Compile Include="UI\LoginPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="LoginPanel.Designer.cs">
+    <Compile Include="UI\LoginPanel.Designer.cs">
       <DependentUpon>LoginPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegisterPanel.cs">
+    <Compile Include="UI\RegisterPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="RegisterPanel.Designer.cs">
+    <Compile Include="UI\RegisterPanel.Designer.cs">
       <DependentUpon>RegisterPanel.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Home.resx">
+    <EmbeddedResource Include="UI\AddInvoicePanel.resx">
+      <DependentUpon>AddInvoicePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AddInvoicePanel2.resx">
+      <DependentUpon>AddInvoicePanel2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AddInvoicePanel3.resx">
+      <DependentUpon>AddInvoicePanel3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EditInvoicePanel.resx">
+      <DependentUpon>EditInvoicePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListInvoicesPanel.resx">
+    <EmbeddedResource Include="UI\InvoicesForm.resx">
+      <DependentUpon>InvoicesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ListInvoicesPanel.resx">
       <DependentUpon>ListInvoicesPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginPanel.resx">
+    <EmbeddedResource Include="UI\LoginPanel.resx">
       <DependentUpon>LoginPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -191,7 +238,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="RegisterPanel.resx">
+    <EmbeddedResource Include="UI\RegisterPanel.resx">
       <DependentUpon>RegisterPanel.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -222,9 +269,6 @@
       <Project>{3c8981bc-6fcc-40c6-aa88-9eb7a328b7f4}</Project>
       <Name>InvoiceRegister.Data</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Bunifu.Core.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

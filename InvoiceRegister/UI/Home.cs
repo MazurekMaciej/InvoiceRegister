@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InvoiceRegister.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,18 +40,22 @@ namespace InvoiceRegister
 
         public void showInvoicesPanel()
         {
-            listInvoicesPanel1.Visible = true;
-            registerPanel1.Visible = false;
-            loginPanel1.Visible = false;
+           // this.Opacity = 0.0f;
+            //this.ShowInTaskbar = false;
+           // this.Hide();
+            var form2 = DependencyResolver.Container.Resolve<InvoicesForm>();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
         }
 
         private void testListButton_Click(object sender, EventArgs e)
         {
-            listInvoicesPanel1.Visible = true;
-            registerPanel1.Visible = false;
-            loginPanel1.Visible = false;
-            ListInvoicesPanel listInvoicesPanel = DependencyResolver.Container.Resolve<ListInvoicesPanel>();
-            listInvoicesPanel.ListInvoices();
+           // this.Opacity = 0.0f;
+           // this.ShowInTaskbar = false;
+           // this.Hide();
+            var form2 = DependencyResolver.Container.Resolve<InvoicesForm>();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
         }
     }
 }

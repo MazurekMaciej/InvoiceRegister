@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unity;
+using InvoiceRegister.UI;
 
 namespace InvoiceRegister
 {
@@ -15,8 +16,7 @@ namespace InvoiceRegister
     {
         public ListInvoicesPanel()
         {
-            InitializeComponent();
-           // ListInvoices();
+            InitializeComponent();  
         }
 
         public void ListInvoices()
@@ -24,11 +24,35 @@ namespace InvoiceRegister
             Invoice invoice = DependencyResolver.Container.Resolve<Invoice>();
             Account account = DependencyResolver.Container.Resolve<Account>();
             var invoicesList = invoice.ListInvoices(account.GetLoggedUser());
-            invoicesListData.DataSource = invoicesList;
+
+            DataTable dt = new DataTable("Invoices");
+            dt.Columns.Add("Numer", System.Type.GetType("System.String"));
+            dt.Columns.Add("Data wystawienia", System.Type.GetType("System.DateTime"));
+            dt.Columns.Add("Przedmiot transakcji", System.Type.GetType("System.String"));
+            dt.Columns.Add("Suma", System.Type.GetType("System.Int32"));
+            dt.Columns.Add("Wplacono", System.Type.GetType("System.Int32"));
+            dt.Columns.Add("Klient", System.Type.GetType("System.String"));
+
+            foreach (var row in invoicesList)
+            {
+                if (row.Klient == null)
+                    dt.Rows.Add(new object[] { row.Numer, row.Data_wystawienia, row.Przedmiot_transakcji, row.Suma, row.Wplacono, row.Klient });
+                else
+                    dt.Rows.Add(new object[] { row.Numer, row.Data_wystawienia, row.Przedmiot_transakcji, row.Suma, row.Wplacono, row.Klient.Nazwa});
+
+            }
+            invoicesListData.DataSource = dt;
+            invoicesListData.MultiSelect = false;
+            invoicesListData.ClearSelection();
 
         }
 
         private void bunifuDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void invoicesListData_SelectionChanged(object sender, EventArgs e)
         {
 
         }

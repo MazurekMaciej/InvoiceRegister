@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unity;
+using InvoiceRegister.UI;
 
 namespace InvoiceRegister
 {
@@ -29,10 +30,25 @@ namespace InvoiceRegister
                 MessageBox.Show("You didn't fill username or password");
             else
             {
-                account.LogIn(user, pass);
-                home.showInvoicesPanel();
+                try
+                {
+                    account.LogIn(user, pass);
+                    this.Parent.Hide();
+                    home.showInvoicesPanel();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Try again");
+                }
+
             }
                  
+        }
+        private void HideForm()
+        {
+            Home home = DependencyResolver.Container.Resolve<Home>();
+            home.ShowInTaskbar = false;
+           // home.showInvoicesPanel();
         }
     }
 }

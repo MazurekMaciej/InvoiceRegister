@@ -47,12 +47,10 @@
   <ItemGroup>
     <Compile Include="DomainModel\Faktura.cs" />
     <Compile Include="DomainModel\Klient.cs" />
-    <Compile Include="DomainModel\Pozycja_faktury.cs" />
     <Compile Include="DomainModel\Sprzedawca.cs" />
     <Compile Include="DomainModel\Uzytkownik.cs" />
     <Compile Include="Exceptions\ClientException.cs" />
     <Compile Include="Exceptions\InvoiceException.cs" />
-    <Compile Include="Exceptions\InvoiceItemException.cs" />
     <Compile Include="Exceptions\LoginException.cs" />
     <Compile Include="Exceptions\PasswordInvalidException.cs" />
     <Compile Include="Exceptions\RegistrationException.cs" />
@@ -62,7 +60,6 @@
     <Compile Include="IAccountManager.cs" />
     <Compile Include="IClientManager.cs" />
     <Compile Include="IInvoiceManager.cs" />
-    <Compile Include="IInvoiceItemManager.cs" />
     <Compile Include="ISellerManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

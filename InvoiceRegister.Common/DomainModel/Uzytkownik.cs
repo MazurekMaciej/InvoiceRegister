@@ -18,7 +18,6 @@ namespace InvoiceRegister.Common.DomainModel
         public IList<Faktura> Faktury { get; set; }
         public IList<Sprzedawca> Sprzedawcy { get; set; }
         public IList<Klient> Klienci { get; set; }
-        public IList<Pozycja_faktury> Pozycje_faktury { get; set; }
 
     }
 }

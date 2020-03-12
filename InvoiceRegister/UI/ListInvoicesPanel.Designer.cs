@@ -34,18 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.invoicesListData = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.fakturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datawystawieniaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datasprzedazyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sposobplatnosciDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sumaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wplaconoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uwagiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uzytkownikDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.klientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sprzedawcaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pozycjefakturyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.invoicesListData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fakturaBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -56,7 +44,6 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(52)))));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             this.invoicesListData.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.invoicesListData.AutoGenerateColumns = false;
             this.invoicesListData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.invoicesListData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.invoicesListData.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -70,19 +57,6 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.invoicesListData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.invoicesListData.ColumnHeadersHeight = 40;
-            this.invoicesListData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.numerDataGridViewTextBoxColumn,
-            this.datawystawieniaDataGridViewTextBoxColumn,
-            this.datasprzedazyDataGridViewTextBoxColumn,
-            this.sposobplatnosciDataGridViewTextBoxColumn,
-            this.sumaDataGridViewTextBoxColumn,
-            this.wplaconoDataGridViewTextBoxColumn,
-            this.uwagiDataGridViewTextBoxColumn,
-            this.uzytkownikDataGridViewTextBoxColumn,
-            this.klientDataGridViewTextBoxColumn,
-            this.sprzedawcaDataGridViewTextBoxColumn,
-            this.pozycjefakturyDataGridViewTextBoxColumn});
             this.invoicesListData.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(52)))));
             this.invoicesListData.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.invoicesListData.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.White;
@@ -101,7 +75,6 @@
             this.invoicesListData.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.White;
             this.invoicesListData.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(117)))), ((int)(((byte)(119)))));
             this.invoicesListData.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.invoicesListData.DataSource = this.fakturaBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
@@ -118,6 +91,7 @@
             this.invoicesListData.HeaderForeColor = System.Drawing.Color.White;
             this.invoicesListData.Location = new System.Drawing.Point(0, 0);
             this.invoicesListData.Name = "invoicesListData";
+            this.invoicesListData.ReadOnly = true;
             this.invoicesListData.RowHeadersVisible = false;
             this.invoicesListData.RowTemplate.Height = 40;
             this.invoicesListData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -125,82 +99,11 @@
             this.invoicesListData.TabIndex = 0;
             this.invoicesListData.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Dark;
             this.invoicesListData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bunifuDataGridView1_CellContentClick);
+            this.invoicesListData.SelectionChanged += new System.EventHandler(this.invoicesListData_SelectionChanged);
             // 
             // fakturaBindingSource
             // 
             this.fakturaBindingSource.DataSource = typeof(InvoiceRegister.Common.DomainModel.Faktura);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            // 
-            // numerDataGridViewTextBoxColumn
-            // 
-            this.numerDataGridViewTextBoxColumn.DataPropertyName = "Numer";
-            this.numerDataGridViewTextBoxColumn.HeaderText = "Numer";
-            this.numerDataGridViewTextBoxColumn.Name = "numerDataGridViewTextBoxColumn";
-            // 
-            // datawystawieniaDataGridViewTextBoxColumn
-            // 
-            this.datawystawieniaDataGridViewTextBoxColumn.DataPropertyName = "Data_wystawienia";
-            this.datawystawieniaDataGridViewTextBoxColumn.HeaderText = "Data_wystawienia";
-            this.datawystawieniaDataGridViewTextBoxColumn.Name = "datawystawieniaDataGridViewTextBoxColumn";
-            // 
-            // datasprzedazyDataGridViewTextBoxColumn
-            // 
-            this.datasprzedazyDataGridViewTextBoxColumn.DataPropertyName = "Data_sprzedazy";
-            this.datasprzedazyDataGridViewTextBoxColumn.HeaderText = "Data_sprzedazy";
-            this.datasprzedazyDataGridViewTextBoxColumn.Name = "datasprzedazyDataGridViewTextBoxColumn";
-            // 
-            // sposobplatnosciDataGridViewTextBoxColumn
-            // 
-            this.sposobplatnosciDataGridViewTextBoxColumn.DataPropertyName = "Sposob_platnosci";
-            this.sposobplatnosciDataGridViewTextBoxColumn.HeaderText = "Sposob_platnosci";
-            this.sposobplatnosciDataGridViewTextBoxColumn.Name = "sposobplatnosciDataGridViewTextBoxColumn";
-            // 
-            // sumaDataGridViewTextBoxColumn
-            // 
-            this.sumaDataGridViewTextBoxColumn.DataPropertyName = "Suma";
-            this.sumaDataGridViewTextBoxColumn.HeaderText = "Suma";
-            this.sumaDataGridViewTextBoxColumn.Name = "sumaDataGridViewTextBoxColumn";
-            // 
-            // wplaconoDataGridViewTextBoxColumn
-            // 
-            this.wplaconoDataGridViewTextBoxColumn.DataPropertyName = "Wplacono";
-            this.wplaconoDataGridViewTextBoxColumn.HeaderText = "Wplacono";
-            this.wplaconoDataGridViewTextBoxColumn.Name = "wplaconoDataGridViewTextBoxColumn";
-            // 
-            // uwagiDataGridViewTextBoxColumn
-            // 
-            this.uwagiDataGridViewTextBoxColumn.DataPropertyName = "Uwagi";
-            this.uwagiDataGridViewTextBoxColumn.HeaderText = "Uwagi";
-            this.uwagiDataGridViewTextBoxColumn.Name = "uwagiDataGridViewTextBoxColumn";
-            // 
-            // uzytkownikDataGridViewTextBoxColumn
-            // 
-            this.uzytkownikDataGridViewTextBoxColumn.DataPropertyName = "Uzytkownik";
-            this.uzytkownikDataGridViewTextBoxColumn.HeaderText = "Uzytkownik";
-            this.uzytkownikDataGridViewTextBoxColumn.Name = "uzytkownikDataGridViewTextBoxColumn";
-            // 
-            // klientDataGridViewTextBoxColumn
-            // 
-            this.klientDataGridViewTextBoxColumn.DataPropertyName = "Klient";
-            this.klientDataGridViewTextBoxColumn.HeaderText = "Klient";
-            this.klientDataGridViewTextBoxColumn.Name = "klientDataGridViewTextBoxColumn";
-            // 
-            // sprzedawcaDataGridViewTextBoxColumn
-            // 
-            this.sprzedawcaDataGridViewTextBoxColumn.DataPropertyName = "Sprzedawca";
-            this.sprzedawcaDataGridViewTextBoxColumn.HeaderText = "Sprzedawca";
-            this.sprzedawcaDataGridViewTextBoxColumn.Name = "sprzedawcaDataGridViewTextBoxColumn";
-            // 
-            // pozycjefakturyDataGridViewTextBoxColumn
-            // 
-            this.pozycjefakturyDataGridViewTextBoxColumn.DataPropertyName = "Pozycje_faktury";
-            this.pozycjefakturyDataGridViewTextBoxColumn.HeaderText = "Pozycje_faktury";
-            this.pozycjefakturyDataGridViewTextBoxColumn.Name = "pozycjefakturyDataGridViewTextBoxColumn";
             // 
             // ListInvoicesPanel
             // 
@@ -218,18 +121,6 @@
         #endregion
 
         private Bunifu.UI.WinForms.BunifuDataGridView invoicesListData;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn datawystawieniaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn datasprzedazyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sposobplatnosciDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sumaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn wplaconoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn uwagiDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn uzytkownikDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn klientDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sprzedawcaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pozycjefakturyDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource fakturaBindingSource;
     }
 }

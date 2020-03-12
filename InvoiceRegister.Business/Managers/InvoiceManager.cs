@@ -24,22 +24,34 @@ namespace InvoiceRegister.Business.Managers
             {
                // var loggedUser = _accountManager.GetLoggedUser();
               //  int id = loggedUser.Id;
-                listInvoices = dbContext.Faktury.Where(inv => inv.Id == user.Id).ToList();
+                listInvoices = dbContext.Faktury.Include("Klient").Where(inv => inv.Uzytkownik.Id == user.Id).ToList();
                 return listInvoices;
             }
         }
         public void CreateInvoice(Faktura invoice)
         {
+            var clientId = invoice.Klient.Id;
+            var sellerId = invoice.Sprzedawca.Id;
+            
+            Faktura invoice2 = new Faktura();
+            invoice2 = invoice;
+            var actualUser = _accountManager.GetLoggedUser();
             using (DatabaseContext dbContext = new DatabaseContext())
             {
                 try
                 {
-                    dbContext.Faktury.Add(invoice);
+                    var user = dbContext.Uzytkownicy.Where(u => u.Id == actualUser.Id).FirstOrDefault();
+                    var client = dbContext.Klienci.Where(c => c.Id == invoice.Klient.Id).FirstOrDefault();
+                    var seller = dbContext.Sprzedawcy.Where(s => s.Id == invoice.Sprzedawca.Id).FirstOrDefault();
+                    invoice2.Klient = client;
+                    invoice2.Sprzedawca = seller;
+                    invoice2.Uzytkownik = user;
+                    dbContext.Faktury.Add(invoice2);
                     dbContext.SaveChanges();
                 }
                 catch (InvoiceException)
                 {
-                    throw new InvoiceException("Invoice cannot be created");
+                    throw new InvoiceException("Blad, faktura nie utworzona");
                 }
             }
         }
@@ -55,7 +67,7 @@ namespace InvoiceRegister.Business.Managers
                 }
                 catch (InvoiceException)
                 {
-                    throw new InvoiceException("Invoice cannot be deleted");
+                    throw new InvoiceException("Blad, faktura nie usunieta");
                 }
             }
         }
@@ -73,22 +85,23 @@ namespace InvoiceRegister.Business.Managers
                     invoiceToUpdate.Data_wystawienia = invoice.Data_wystawienia;
                     invoiceToUpdate.Data_sprzedazy = invoice.Data_sprzedazy;
                     invoiceToUpdate.Sposob_platnosci = invoice.Sposob_platnosci;
+                    invoiceToUpdate.Przedmiot_transakcji = invoice.Przedmiot_transakcji;
                     invoiceToUpdate.Suma = invoice.Suma;
                     invoiceToUpdate.Wplacono = invoice.Wplacono;
                     invoiceToUpdate.Uwagi = invoice.Uwagi;
-                    invoiceToUpdate.Klient = invoice.Klient;
-                    invoiceToUpdate.Sprzedawca = invoice.Sprzedawca;
+                   // invoiceToUpdate.Klient = invoice.Klient;
+                   // invoiceToUpdate.Sprzedawca = invoice.Sprzedawca;
 
                     dbContext.SaveChanges();
                 }
                 catch (InvoiceException)
                 {
-                    throw new InvoiceException("Invoice cannot be updated");
+                    throw new InvoiceException("Blad, faktura nie zaktualizowana");
                 }
             }
             else
             {
-                throw new InvoiceException("Invoice cannot be updated. There is no such a invoice.");
+                throw new InvoiceException("Nie ma takiej faktury");
             }
 
         }
@@ -104,7 +117,7 @@ namespace InvoiceRegister.Business.Managers
                 }
                 else
                 {
-                    throw new InvoiceException("Invoice not found");
+                    throw new InvoiceException("Faktura nie znaleziona");
                 }
             }
         }

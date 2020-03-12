@@ -15,7 +15,6 @@ namespace InvoiceRegister.Data
         public virtual DbSet<Klient> Klienci { get; set; }
         public virtual DbSet<Sprzedawca> Sprzedawcy { get; set; }
         public virtual DbSet<Faktura> Faktury { get; set; }
-        public virtual DbSet<Pozycja_faktury> Pozycje_faktury { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

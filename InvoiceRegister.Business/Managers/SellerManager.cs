@@ -9,21 +9,27 @@ namespace InvoiceRegister.Business.Managers
 {
     public class SellerManager : ISellerManager
     {
-        public SellerManager()
+        private IAccountManager _accountManager;
+        public SellerManager(IAccountManager accountManager)
         {
-
+            _accountManager = accountManager ?? throw new ArgumentNullException(nameof(accountManager));
         }
         public void CreateSeller(Sprzedawca seller)
         {
+            Sprzedawca seller2 = new Sprzedawca();
+            seller2 = seller;
+            var user = _accountManager.GetLoggedUser();
             DatabaseContext dbContext = new DatabaseContext();
             try
             {
-                dbContext.Sprzedawcy.Add(seller);
+                var actualUser = dbContext.Uzytkownicy.Where(u => u.Id == user.Id).FirstOrDefault();
+                seller2.Uzytkownik = actualUser;
+                dbContext.Sprzedawcy.Add(seller2);
                 dbContext.SaveChanges();
             }
             catch (ClientException)
             {
-                throw new ClientException("Client cannot be created");
+                throw new ClientException("Blad, sprzedawca nie utworzony");
             }
         }
 
@@ -37,7 +43,7 @@ namespace InvoiceRegister.Business.Managers
             }
             catch (ClientException)
             {
-                throw new ClientException("Client not found");
+                throw new ClientException("Blad, sprzedawca nie znaleziony");
             }
         }
     }

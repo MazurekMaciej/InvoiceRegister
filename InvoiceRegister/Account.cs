@@ -29,14 +29,17 @@ namespace InvoiceRegister
             catch(UsernameInvalidException e)
             {
                 MessageBox.Show(e.Message);
+                throw new UsernameInvalidException();
             }
             catch(PasswordInvalidException e)
             {
                 MessageBox.Show(e.Message);
+                throw new PasswordInvalidException();
             }
             catch
             {
                 MessageBox.Show("Something went wrong");
+                throw;
             }
         }
 
@@ -64,7 +67,7 @@ namespace InvoiceRegister
 
         public Uzytkownik GetLoggedUser()
         {
-            Uzytkownik user = new Uzytkownik();
+            Uzytkownik user;
             try
             {
                 user = _accountManager.GetLoggedUser();
@@ -73,12 +76,13 @@ namespace InvoiceRegister
             catch(UserNotFoundException e)
             {
                 MessageBox.Show("No logged user found");
+                throw;
             }
             catch
             {
-                MessageBox.Show("Try again with different credentials");
+                MessageBox.Show("No logged user found");
+                throw;
             }
-            return user;
         }
 
     }
